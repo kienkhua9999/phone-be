@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("./layout/layout.css.ejs") %>
+
+</head>
+
+<body>
+
+  <%- include("./layout/layout.header.ejs") %>
+    <div class="row ">
+      <div class="col-12 grid-margin">
+        <div class="row ">
+
+
+          <div class="col-4 grid-margin">
+          </div>
+          <div class="col-4 grid-margin"></div>
+          <div class="col-4 grid-margin">
+              <div class="box">
+                  <div class="container-1">
+                      <span class="icon"><i class="fa fa-search"></i></span>
+                      <input type="search" id="myInput" onkeyup="myFunction()"
+                          placeholder="Search for names.." />
+                  </div>
+              </div>
+          </div>
+
+      </div>
+        <table style="color: white;border-radius: 5px;" class="table table-dark" id="myTable">
+          <thead>
+            <tr class="header">
+              <th scope="col">Username</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Contact Date</th>
+              <th scope="col">Content</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% contacts.rows.forEach(function(contact){ %>
+            <tr>
+              <td>
+                <%= contact.username %>
+              </td>
+              <td>
+                <%= contact.email %>
+              </td>
+              <td>
+                <%= contact.phonenumber %>
+              </td>
+              <td>
+                <%= contact.contactdate %>
+              </td>
+              <td>
+                <%= contact.content %>
+              </td>
+            </tr>
+            <% }); %>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%- include("./layout/layout.footer.ejs") %>
+      <%- include("./layout/layout.js.ejs") %>
+      <style>
+        .container-1 {
+            width: 300px;
+            vertical-align: middle;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .container-1 input#myInput {
+            width: 384px;
+            height: 32px;
+            background: #2b303b;
+            border: none;
+            font-size: 10pt;
+            float: left;
+            color: #63717f;
+            padding-left: 45px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .container-1 input#search::-webkit-input-placeholder {
+            color: #65737e;
+        }
+
+        .container-1 input#search:-moz-placeholder {
+            /* Firefox 18- */
+            color: #65737e;
+        }
+
+        .container-1 input#search::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #65737e;
+        }
+
+        .container-1 input#search:-ms-input-placeholder {
+            color: #65737e;
+        }
+
+        .container-1 .icon {
+            position: absolute;
+            top: 50%;
+            margin-left: 17px;
+            margin-top: 10px;
+            z-index: 1;
+            color: #4f5b66;
+        }
+    </style>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

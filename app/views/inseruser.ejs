@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("./layout/layout.css.ejs") %>
+</head>
+
+<body>
+
+  <%- include("./layout/layout.header.ejs") %>
+  <div class="row ">
+    <div class="col-12 grid-margin">
+    <form action="" method="POST" enctype="application/x-www-form-urlencoded">
+        
+        <div class="form-group">
+          <label for="exampleInputPassword1">Username</label>
+          <input type="text" class="form-control" name="username" placeholder="Username...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="text" class="form-control" name="password"  placeholder="Password...">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Email</label>
+            <input type="email" class="form-control" name="email"  placeholder="Email...">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">PhoneNumber</label>
+            <input type="number" class="form-control" name="phonenumber"  placeholder="PhoneNumber..."/>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Address</label>
+            <input type="text" class="form-control" name="address" placeholder="Address...">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Rights section</label>
+              <select name="roleId">
+                  <% roles.rows.forEach(function(role){ %>
+                      <option value="<%= role.id %>">
+                          <%= role.name %>
+                      </option>
+                      <% }); %>
+              </select>
+          </div>
+        <button type="submit" class="btn btn-primary">Create</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/user/listuser" class="btn btn-primary">Back</a>
+      </form>
+      </div>
+      </div>
+    <%- include("./layout/layout.footer.ejs") %>
+    <%- include("./layout/layout.js.ejs") %>
+    
+</body>
+
+</html>

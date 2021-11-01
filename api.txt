@@ -1,0 +1,39 @@
+đăng kí-phương thức post
+
+http://localhost:8080/api/auth/signup
+
+đăng nhập-phương thức post
+
+http://localhost:8080/api/auth/signin
+
+-load sản phẩm theo danh mục - get
+
+load theo danh mục IPHONE
+http://localhost:8080/product/api/Allcategory_Iphone
+
+load theo danh mục Sam sung
+http://localhost:8080/product/api/Allcategory_Samsung
+
+load theo danh mục Oppo
+http://localhost:8080/product/api/Allcategory_Oppo
+
+load theo danh mục Redmi
+http://localhost:8080/product/api/Allcategory_Redme
+
+-Load toàn bộ sản phẩm - get
+http://localhost:8080/product/api/Allprodroduct
+
+- Detail sản phẩm truyền theo id - get
+http://localhost:8080/product/api/Detailproduct/:id
+
+- thêm sản phẩm - post
+http://localhost:8080/product/addproduct
+
+- cập nhật sản phẩm truyền theo id -post 
+http://localhost:8080/product/updateproduct/:id
+
+- liên hệ, phương thức post
+http://localhost:8080/contact/api/addcontact
+
+- Đánh giá ,phương thức post
+http://localhost:8080/review/api/addreview

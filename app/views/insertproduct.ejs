@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./layout/layout.css.ejs") %>
+     
+</head>
+
+<body>
+
+    <%- include("./layout/layout.header.ejs") %>
+        <div class="row ">
+            <div class="col-12 grid-margin">
+                <form action="/product/addproduct" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Product ID</label>
+                        <input type="number" class="form-control" name="productid" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Product Name</label>
+                        <input type="text" class="form-control" name="productname" id="exampleInputPassword1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Description</label>                       
+                        <textarea type="text" class="form-control" name="description" id="description">                            
+                          </textarea> 
+                        <script>CKEDITOR.replace('description');</script>
+                    </div>
+                   
+    
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Guarantee</label>
+                        <input type="text" class="form-control" name="guarantee" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Makingdate</label>
+                        <input type="text" class="form-control" name="makingdate" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Price</label>
+                        <input type="number" class="form-control" name="price" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Quantity</label>
+                        <input type="number" class="form-control" name="quantity" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Sale off</label>
+                        <input type="number" class="form-control" name="saleoff" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Status</label>
+                        <input type="text" class="form-control" name="status" id="exampleInputPassword1">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Category Name</label>
+                        <select name="categoryid">
+                            <% categories.rows.forEach(function(category){ %>
+                                <option value="<%= category.id %>">
+                                    <%= category.categoryName %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Producer Name</label>
+                        <select name="producerid">
+                            <% producers.rows.forEach(function(producer){ %>
+                                <option value="<%= producer.id %>">
+                                    <%= producer.producerName %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="image" multiple />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                </form>
+
+
+            </div>
+        </div>
+
+        <%- include("./layout/layout.footer.ejs") %>
+            <%- include("./layout/layout.js.ejs") %>
+
+</body>
+
+</html>

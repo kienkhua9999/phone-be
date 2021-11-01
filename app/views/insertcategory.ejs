@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("./layout/layout.css.ejs") %>
+</head>
+
+<body>
+
+  <%- include("./layout/layout.header.ejs") %>
+    <div class="row ">
+      <div class="col-12 grid-margin">
+        <form action="" method="POST" enctype="application/x-www-form-urlencoded">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Category Id</label>
+            <input type="text" class="form-control" name="txtid" id="exampleInputPassword1"
+              placeholder="Category name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Category Name</label>
+            <input type="text" class="form-control" name="categoryName" id="exampleInputPassword1"
+              placeholder="Category name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Categories</label>
+            <div class="input-group input-group--append">
+              <select class="input js-input-select input--fluid" name="parentId">
+                <option value="0" selected="selected">None
+                </option>
+                <% for (let index=0; index < ds_category_parent.length; index++) {%>
+                  <option value="<%= ds_category_parent[index].dataValues.id %>">
+                    <%= ds_category_parent[index].dataValues.categoryName %>
+                  </option>
+                  <%} %>
+              </select>
+            </div></br>
+
+            <button type="submit" class="btn btn-primary">Create</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/category/listcategory" class="btn btn-primary">Back</a>
+
+
+        </form>
+      </div>
+    </div>
+    <%- include("./layout/layout.footer.ejs") %>
+      <%- include("./layout/layout.js.ejs") %>
+
+</body>
+
+</html>

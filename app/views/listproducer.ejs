@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./layout/layout.css.ejs") %>
+
+</head>
+
+<body>
+
+    <%- include("./layout/layout.header.ejs") %>
+        <div class="row ">
+            <div class="col-12 grid-margin">
+                <table style="color: white;border-radius: 5px;" class="table table-dark" id="example1">
+                    <div style="margin-bottom: 5px;">
+                        <a href="./addproducer" class="btn btn-success"><i class="fas fa-plus-square"></i> Add
+                            new</a>
+                    </div>
+                    <thead>
+                        <tr class="header">
+                            <th>Producer name</th>
+                            <th>Address</th>
+                            <th>Option </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% producers.rows.forEach(function(producer){ %>
+                            <tr >
+                                <td>
+                                    <%= producer.producerName %>
+                                </td>
+                                <td>
+                                    <%= producer.address %>
+                                </td>
+                                <td>
+                                    <a href="./updateproducer/<%= producer.id %>"><i
+                                            class='fas fa-pencil-ruler'
+                                            style='font-size:20px'></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="./deleteproducer/<%= producer.id %>"><i
+                                            class="fas fa-trash" style='font-size:20px; color: 	#FF3333;'></i></a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="../tem/plugins/jquery/jquery.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Bootstrap 4 -->
+        <script src="../tem/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- DataTables  & Plugins -->
+        <script src="../tem/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../tem/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../tem/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../tem/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+        <script src="../tem/plugins/jszip/jszip.min.js"></script>
+        <script src="../tem/plugins/pdfmake/pdfmake.min.js"></script>
+        <script src="../tem/plugins/pdfmake/vfs_fonts.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="../tem/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- DataTables  & Plugins -->
+        <script src="../tem/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../tem/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../tem/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../tem/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+        <script src="../tem/plugins/jszip/jszip.min.js"></script>
+        <script src="../tem/plugins/pdfmake/pdfmake.min.js"></script>
+        <script src="../tem/plugins/pdfmake/vfs_fonts.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+        <script src="../tem/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <script>
+            $(function () {
+                $("#example1").DataTable({
+                    // "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": false,
+                    "order": [], //Initial no order.
+                    "aaSorting": [],
+                    "language": {
+
+                        "sSearch": "seach:",
+                        "sUrl": "",
+                    }
+                });
+            });
+        </script>
+        <%- include("./layout/layout.footer.ejs") %>
+
+</body>
+
+</html>

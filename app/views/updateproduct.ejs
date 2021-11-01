@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./layout/layout.css.ejs") %>
+</head>
+
+<body>
+
+    <%- include("./layout/layout.header.ejs") %>
+        <div class="row ">
+            <div class="col-12 grid-margin">
+                <form action="../../product/updateproduct/<%= products.id %>" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" name="id" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" value="<%= products.id %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Product Name</label>
+                        <input type="text" class="form-control" name="productname" value="<%= products.productname %>" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Description</label>
+                        <textarea type="text" class="form-control" name="description" id="description">      
+                            <%= products.description %>                   
+                        </textarea> 
+                      <script>CKEDITOR.replace('description');</script>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Guarantee</label>
+                        <input type="text" class="form-control" name="guarantee" value="<%= products.guarantee %>" 
+                            placeholder="Parentid">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Makingdate</label>
+                        <input type="text" class="form-control" name="makingdate" value="<%= products.makingdate %>" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Price</label>
+                        <input type="number" class="form-control" name="price" value="<%= products.price %>" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Quantity</label>
+                        <input type="number" class="form-control" name="quantity" value="<%= products.quantity %>" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Sale off</label>
+                        <input type="number" class="form-control" name="saleoff" value="<%= products.saleoff %>" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Status</label>
+                        <input type="text" class="form-control" name="status" value="<%= products.status %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Category Name</label>
+                        <select name="categoryid">
+                            <option value="<%= products.categoryid %>">
+                                <%= products.categoryName %>
+                            </option>
+                            <% categories.rows.forEach(function(category){ %>
+                                <option value="<%= category.id %>">
+                                    <%= category.categoryName %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Producer Name</label>
+                        <select name="producerid">
+
+                            <option value="<%= products.producerid %>">
+                                <%= products.producerName %>
+                            </option>
+                            <% producers.rows.forEach(function(producer){ %>
+                                <option value="<%= producer.id %>">
+                                    <%= producer.producerName %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="image" multiple />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                </form>
+            </div>
+        </div>
+        <%- include("./layout/layout.footer.ejs") %>
+            <%- include("./layout/layout.js.ejs") %>
+
+</body>
+
+</html>

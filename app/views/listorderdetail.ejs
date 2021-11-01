@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./layout/layout.css.ejs") %>
+
+</head>
+
+<body>
+
+    <%- include("./layout/layout.header.ejs") %>
+        <div class="row">
+            <div class="col-sm-4">
+                <h1>Order</h1>
+                <table style="color: white;border-radius: 5px;" class="table table-dark" >
+
+                    <tr>
+                        <th scope="col">Order Id</th>
+                        <td>
+                            <%= ds_orders.price %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Customer</th>
+                        <td>
+                            <%= orders.username %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Order date</th>
+                        <td>
+                            <%= ds_orders.orderate %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Price</th>
+                        <td>
+                            <%= ds_orders.orderate %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Phone</th>
+                        <td>
+                            <%= ds_orders.orderate %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Address</th>
+                        <td>
+                            <%= ds_orders.status %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Status</th>
+                        <td>
+                            <form action="http://localhost:8080/order/detailorder/<%= ds_orders.orderid %>" method="POST" enctype="application/x-www-form-urlencoded">
+                                <div class="form-group">
+                                  <input type="hidden" class="form-control" name="txtid" value="<%= ds_orders.orderid %>" id="exampleInputEmail1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Producer Name</label>
+                                    <select name="status">
+                                        
+                                            <option value="<%= ds_orders.status %>">
+                                                <%= ds_orders.status %>
+                                            </option>  
+                                            <option value="Chờ xác nhận">
+                                                Chờ xác nhận
+                                            </option> 
+                                            <option value="Đã xữ lý">
+                                                Đã xữ lý                                       
+                                            <option value="Đang giao hàng">
+                                                Đang giao hàng
+                                            </option> 
+                                            <option value="Giao hàng thành công">
+                                                Giao hàng thành công
+                                            </option> 
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">Update</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/order/listorder" class="btn btn-primary">Back</a>
+                              </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-8">
+                <h1>Product</h1>
+                <table style="color: white;border-radius: 5px;" class="table table-dark" >
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">ProductName</th>
+                        <th scope="col">price</th>
+                        <th scope="col">Image</th>
+                        <th scope="col" colspan="2">Option</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                       
+                        <td>
+                          <%= ds_orders.id %>
+                        </td>
+                        <td>
+                          <%= ds_orders.productname %>
+                        </td>
+                        <td>
+                          <%= ds_orders.price %>
+                        </td>
+                        <td>
+                          <img src="../../uploads/<%= ds_orders.imageurl %>" alt="">
+                        </td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <%- include("./layout/layout.footer.ejs") %>
+            <%- include("./layout/layout.js.ejs") %>
+</body>
+
+</html>
