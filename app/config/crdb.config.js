@@ -2,7 +2,7 @@ var pg = require("pg");
 
 var config_db = {
     user: "postgres",
-    database: "app_phone",
+    database: "kien",
     password: "1234$",
     host: "localhost",
     port: "5432",
