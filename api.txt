@@ -37,3 +37,9 @@ http://103.163.119.33:8080/contact/api/addcontact
 
 - Đánh giá ,phương thức post
 http://103.163.119.33:8080/review/api/addreview
+
+- list giá thấp - get
+http://103.163.119.33:8080/product/api/Apiproduct_lowprice
+
+- list giá cao - get
+http://103.163.119.33:8080/product/api/Apiproduct_highprice

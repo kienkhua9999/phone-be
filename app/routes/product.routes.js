@@ -42,6 +42,9 @@ module.exports = function (app) {
     app.get("/product/api/Allcategory_Samsung", controller.ApiCategoryProduct_SAMSUNG);
     app.get("/product/api/Allcategory_Oppo", controller.ApiCategoryProduct_OPPO);
     app.get("/product/api/Allcategory_Redme", controller.ApiCategoryProduct_REDMI);
+    app.get("/product/api/Apiproduct_lowprice", controller.Apiproduct_lowprice);
+    app.get("/product/api/Apiproduct_highprice", controller.Apiproduct_highprice);
+
 
 
 };

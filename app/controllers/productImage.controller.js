@@ -10,7 +10,7 @@ exports.ListImage = (req, res) => {
             return console.error('error', err);
         }
         var id = req.params.id;
-        client.query(`SELECT productimages.*,products."id" as proid FROM productimages inner join products on productimages."productId" = products."id" where productimages."productId" = ${id} `, function (err, result) {
+        client.query(`SELECT productimages.*,products."id" as proid FROM productimages inner join products on productimages."productId" = products."id" where products."id" = ${id} `, function (err, result) {
             done();
 
             if (err) {

@@ -204,8 +204,8 @@ exports.ApiDetailProduct = (req, res) => {
             return console.error('error', err);
         }
         var id = req.params.id;
-        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
-                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" WHERE products."id" = ${id}`, function (err, result) {
+        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" productimages."
+                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" inner join products on productimages."productId" = products."id"WHERE products."id" = ${id}`, function (err, result) {
             done();
 
             if (err) {
@@ -283,6 +283,42 @@ exports.ApiCategoryProduct_REDMI = (req, res) => {
         var id = req.params.id;
         client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
                     FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" WHERE categories."id"=4 or categories."parentId"=4`, function (err, result) {
+            done();
+
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            res.json(result.rows);  
+        });
+    });
+};
+exports.Apiproduct_lowprice = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
+                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" ORDER BY price ASC LIMIT 20`, function (err, result) {
+            done();
+
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            res.json(result.rows);  
+        });
+    });
+};
+exports.Apiproduct_highprice = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
+                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" ORDER BY price DESC LIMIT 20`, function (err, result) {
             done();
 
             if (err) {
