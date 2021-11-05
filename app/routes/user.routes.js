@@ -41,4 +41,5 @@ module.exports = function (app) {
   app.get("/user/deleteuser/:id", controller.deleteUser);
 
   app.post("/", controller.signin);
+  app.get("/user/api/listuser", controller.APIlistUser);
 };

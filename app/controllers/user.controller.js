@@ -202,3 +202,9 @@ exports.signin = (req, res) => {
         res.status(500).send({ message: err.message });
       });
   };
+
+  exports.APIlistUser = (req, res) => {
+    User.findAll().then(user => {
+        res.json(user);
+    });
+}
