@@ -204,8 +204,8 @@ exports.ApiDetailProduct = (req, res) => {
             return console.error('error', err);
         }
         var id = req.params.id;
-        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" productimages."
-                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" inner join products on productimages."productId" = products."id"WHERE products."id" = ${id}`, function (err, result) {
+        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
+                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" WHERE products."id" = ${id}`, function (err, result) {
             done();
 
             if (err) {

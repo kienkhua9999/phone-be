@@ -21,7 +21,6 @@ exports.ListOrder = (req, res) => {
                 res.end();
                 return console.error('error running query', err);
             }
-            // console.log(result.rows[8].categoryName);
             // res.json(result.rows);
             res.render("./listorder.ejs", { orders: result });
         });
@@ -65,23 +64,94 @@ exports.ListOrderdetail = (req, res) => {
     });
 };
 
+exports.addOrder = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        client.query(`select "id" from orderproducts order by "id" DESC limit 1`, function (err, result) {
+            done();
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            else {
+                var order = result.rows[0].id;
+                pool_db.connect(function (err, client, done) {
+                    if (err) {
+                        return console.error('error', err);
+                    }
+                    client.query("INSERT INTO orderproducts VALUES ('" + (result.rows[0].id + 1) + "','" + req.body.orderate + "','" + req.body.totalPrice + "','" + req.body.status + "','" + req.body.userId + "')", function (err, result) {
+                        done();
+                        if (err) {
+                            res.end();
+                            return console.error('error running query', err);
+                        }
+                        
+                        else {
+                           
+                            pool_db.connect(function (err, client, done) {
+                                if (err) {
+                                    return console.error('error', err);
+                                }
+                                client.query(`select "id" from orderdetails order by "id" DESC limit 1`, function (err, result) {
+                                    done();
+                                    if (err) {
+                                        res.end();
+                                        return console.error('error running query', err);
+                                    }
+                                    else {
+                                        var orderdetails = result.rows[0].id;
+                                        console.log(orderdetails);
+                                        pool_db.connect(function (err, client, done) {
+                                            if (err) {
+                                                return console.error('error', err);
+                                            }
+
+                                            client.query("INSERT INTO orderdetails VALUES ('" + (orderdetails + 1)+ "','" + req.body.Quantity + "','" + req.body.price + "','" + (order+1) + "','" + req.body.productid + "')", function (err, result) {
+                                                done();
+
+                                                if (err) {
+                                                    res.end();
+                                                    return console.error('error running query', err);
+                                                }
+
+                                                res.send("thanh cong");
+
+                                            });
+                                        });
+                                    }
+
+                                });
+                            });
+                        }
+
+                    });
+                });
+            }
+
+
+        });
+    });
+};
+
 exports.updateOrder = async (req, res) => {
     pool_db.connect(function (err, client, done) {
         if (err) {
             return console.error('error', err);
-        }else{
-          
+        } else {
+
             client.query(`UPDATE orderproducts SET "status" = '${req.body.status}' WHERE "id" = ${req.params.id} `, function (err, result) {
                 done();
 
                 if (err) {
                     res.end();
                     return console.error('error running query updarte', err);
-                }else{
-                    
+                } else {
+
                     res.redirect("../listorder");
                 }
-                
+
 
             });
         }

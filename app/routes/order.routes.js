@@ -25,6 +25,7 @@ module.exports = function (app) {
     app.get("/order/listorder", controller.ListOrder);
 
     app.get("/order/detailorder/:id", controller.ListOrderdetail);
+    app.post("/order/addorder", controller.addOrder);
     app.post("/order/detailorder/:id", controller.updateOrder);
   
 
