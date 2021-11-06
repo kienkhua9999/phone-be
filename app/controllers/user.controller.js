@@ -208,3 +208,21 @@ exports.signin = (req, res) => {
         res.json(user);
     });
 }
+
+exports.ApiDetailuser = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`SELECT * FROM users  WHERE users."id" = ${id}`, function (err, result) {
+            done();
+
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            res.json(result.rows[0]);  
+        });
+    });
+};

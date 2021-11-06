@@ -43,3 +43,13 @@ http://103.163.119.33:8080/product/api/Apiproduct_lowprice
 
 - list giá cao - get
 http://103.163.119.33:8080/product/api/Apiproduct_highprice
+
+- list theo sp phổ biến - get
+  http://103.163.119.33:8080/product/api/ApiProduct_IPHONE_Popular
+  http://103.163.119.33:8080/product/api/ApiProduct_SAMSUNG_Popular
+  http://103.163.119.33:8080/product/api/ApiProduct_OPPO_Popular
+  http://103.163.119.33:8080/product/api/ApiProduct_REDMI_Popular
+
+
+- chi tiết tài khoản - get - truyền id
+   http://103.163.119.33:8080/user/api/detailuser/:id

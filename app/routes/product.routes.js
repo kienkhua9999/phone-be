@@ -44,6 +44,11 @@ module.exports = function (app) {
     app.get("/product/api/Allcategory_Redme", controller.ApiCategoryProduct_REDMI);
     app.get("/product/api/Apiproduct_lowprice", controller.Apiproduct_lowprice);
     app.get("/product/api/Apiproduct_highprice", controller.Apiproduct_highprice);
+    app.get("/product/api/ApiProduct_IPHONE_Popular", controller.ApiProduct_IPHONE_Popular);
+    app.get("/product/api/ApiProduct_SAMSUNG_Popular", controller.ApiProduct_SAMSUNG_Popular);
+    app.get("/product/api/ApiProduct_OPPO_Popular", controller.ApiProduct_OPPO_Popular);
+    app.get("/product/api/ApiProduct_REDMI_Popular", controller.ApiProduct_REDMI_Popular);
+
 
 
 

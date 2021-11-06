@@ -329,3 +329,77 @@ exports.Apiproduct_highprice = (req, res) => {
         });
     });
 };
+
+
+exports.ApiProduct_IPHONE_Popular = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
+                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" WHERE categories."id"=1 or categories."parentId"=1 LIMIT 6` , function (err, result) {
+            done();
+
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            res.json(result.rows);     
+        });
+    });
+};
+exports.ApiProduct_SAMSUNG_Popular = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
+                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" WHERE categories."id"=2 or categories."parentId"=2 LIMIT 6`, function (err, result) {
+            done();
+
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            res.json(result.rows);    
+        });
+    });
+};
+exports.ApiProduct_OPPO_Popular = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
+                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" WHERE categories."id"=3 or categories."parentId"=3 LIMIT 6`, function (err, result) {
+            done();
+
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            res.json(result.rows);  
+        });
+    });
+};
+exports.ApiProduct_REDMI_Popular = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
+                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" WHERE categories."id"=4 or categories."parentId"=4 LIMIT 6`, function (err, result) {
+            done();
+
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            res.json(result.rows);  
+        });
+    });
+};

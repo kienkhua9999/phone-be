@@ -42,4 +42,5 @@ module.exports = function (app) {
 
   app.post("/", controller.signin);
   app.get("/user/api/listuser", controller.APIlistUser);
+  app.get("/user/api/detailuser/:id", controller.ApiDetailuser);
 };
