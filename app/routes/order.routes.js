@@ -25,8 +25,17 @@ module.exports = function (app) {
     app.get("/order/listorder", controller.ListOrder);
 
     app.get("/order/detailorder/:id", controller.ListOrderdetail);
+
     app.post("/order/addorder", controller.addOrder);
+
     app.post("/order/detailorder/:id", controller.updateOrder);
+
+    app.get("/order/deleteorder/:id", controller.Deleteorder);
+
+    //api
+    app.post("/order/api/addCart", controller.addCart);
+
+    app.get("/order/api/Orderdetail_user/:id", controller.Orderdetail_user);
   
 
 };

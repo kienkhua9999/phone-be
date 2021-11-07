@@ -44,7 +44,7 @@ http://103.163.119.33:8080/product/api/Apiproduct_lowprice
 - list giá cao - get
 http://103.163.119.33:8080/product/api/Apiproduct_highprice
 
-- list theo sp phổ biến - get
+- list theo sp phổ biến (6 sản phẩm)- get
   http://103.163.119.33:8080/product/api/ApiProduct_IPHONE_Popular
   http://103.163.119.33:8080/product/api/ApiProduct_SAMSUNG_Popular
   http://103.163.119.33:8080/product/api/ApiProduct_OPPO_Popular
@@ -52,4 +52,22 @@ http://103.163.119.33:8080/product/api/Apiproduct_highprice
 
 
 - chi tiết tài khoản - get - truyền id
-   http://103.163.119.33:8080/user/api/detailuser/:id
+  http://103.163.119.33:8080/user/api/detailuser/:id
+
+
+- thêm vào giỏ hàng - post 
+    + các tham số truyền vào : - orderate (ngay tao)
+                                - totalPrice (tổng tiền)
+                                - status (trang thai)
+                                - userId  (id của tài khoản đang đăng nhập để mua hàng)
+                                - Quantity (số lượng)
+                                - productId (id của sản phẩm đươc chọn)
+
+   - http://103.163.119.33:8080/order/api/addCart
+
+   
+
+- danh sách các sản phẩm trong giỏ hàng lấy theo id của tài khoản - get
+   
+   - http://103.163.119.33:8080/order/api/Orderdetail_user/:id
+
