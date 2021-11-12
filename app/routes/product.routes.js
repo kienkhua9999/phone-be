@@ -23,6 +23,8 @@ module.exports = function (app) {
     });
     //get
     app.get("/product/listproduct", controller.ListProduct);
+    //detail
+    app.get("/product/Detailproduct/:id", controller.DetailProduct);
     // post
     app.get("/product/addproduct", controller.fromInsert);
     app.post('/product/addproduct', upload.single("image"), controller.addProduct);

@@ -33,17 +33,50 @@ exports.addContact = (req, res) => {
         if (err) {
             return console.error('error', err);
         }
-        client.query("INSERT INTO contacts VALUES ('" + req.body.id + "','" +  req.body.contactdate + "','" + req.body.content + "','" + req.body.userid + "')", function (err, result) {
+        client.query(`SELECT id FROM contacts order by "id" DESC limit 1`, function (err, result) {
             done();
 
             if (err) {
                 res.end();
                 return console.error('error running query', err);
+            }else{
+                var contacts = result.rows[0].id;
+                pool_db.connect(function (err, client, done) {
+                    if (err) {
+                        return console.error('error', err);
+                    }
+                    client.query("INSERT INTO contacts VALUES ('" + (contacts+1) + "','" +  req.body.contactdate + "','" + req.body.content + "','" + req.body.userId + "')", function (err, result) {
+                        done();
+                
+                        if (err) {
+                            res.end();
+                            return console.error('error running query', err);
+                        }
+                        res.status(200).send({ message: "Success!" });
+                
+                    });
+                });
             }
-            res.stats(200).render("success");
+            
+        });
+    });
+    
+};
+
+exports.Deletecontact = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`delete from contacts where contacts."id"=${id} `, function (err, result) {
+            done();
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+                res.redirect("../../contact/listcontact");
 
         });
     });
 };
-
-

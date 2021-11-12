@@ -174,6 +174,27 @@ exports.deleteProduct = async (req, res) => {
     await res.redirect("../../product/listproduct");
 
 };
+//detail
+exports.DetailProduct = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`SELECT products.*,categories."id" as cateid,categories."categoryName",producers."id" as prodid,producers."producerName",producers."address" 
+                    FROM products inner join categories on products."categoryid" = categories."id" inner join producers on products."producerid" = producers."id" WHERE products."id" = ${id}`, function (err, result) {
+            done();
+
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+                
+            res.render("./Detailproduct.ejs", { product: result.rows[0] });
+            
+        });
+    });
+};
 
 //API
 exports.ApiListProduct = (req, res) => {

@@ -24,6 +24,8 @@ module.exports = function(app) {
     app.get("/review/listreview", controller.ListReview);
 
     // post
-    app.post("/review/api/addreview", upload.single("image"), controller.addReview);
+    app.post("/review/api/addreview", controller.addReview);
+
+    app.get("/review/Deletereview/:id", controller.Deletereview);
     
 };

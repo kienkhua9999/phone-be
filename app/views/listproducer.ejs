@@ -37,7 +37,7 @@
                                     <a href="./updateproducer/<%= producer.id %>"><i
                                             class='fas fa-pencil-ruler'
                                             style='font-size:20px'></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="./deleteproducer/<%= producer.id %>"><i
+                                    <a href="./deleteproducer/<%= producer.id %>" onclick="return confirm('Are you sure you want to delete this item?');"><i
                                             class="fas fa-trash" style='font-size:20px; color: 	#FF3333;'></i></a>
                                 </td>
                             </tr>

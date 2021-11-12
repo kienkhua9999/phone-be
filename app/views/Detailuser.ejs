@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("./layout/layout.css.ejs") %>
+
+</head>
+
+<body>
+
+  <%- include("./layout/layout.header.ejs") %>
+    <div class="row ">
+      <div class="col-12 grid-margin">
+        <table style="color: white;border-radius: 5px;" class="table table-dark" id="myTable">
+          <tbody>       
+            <tr>
+                <th scope="col">UserName :</th>
+              <td>
+                <%= user.username %>
+              </td>
+            </tr>
+            <tr>
+                <th scope="col">Password :</th>
+              <td>
+                <%= user.password %>
+              </td>
+            </tr>
+            <tr>
+                <th scope="col">Email:</th>
+              <td>
+                <%= user.email %>
+              </td>
+            </tr>
+            <tr>
+                <th scope="col">Phonenumber:</th>
+              <td>
+                <%= user.phonenumber %>
+              </td>
+            </tr>
+            <tr>
+                <th scope="col">Address :</th>
+              <td>
+                <%= user.address %>
+              </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                <a href="/user/listuser" class="btn btn-primary">Back</a>
+                </td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+   
+       
+    <%- include("./layout/layout.footer.ejs") %>
+      <%- include("./layout/layout.js.ejs") %>
+      
+</body>
+
+</html>

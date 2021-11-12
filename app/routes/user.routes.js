@@ -13,7 +13,7 @@ module.exports = function (app) {
 
   app.get(
     "/api/test/user",
-    [authJwt.verifyToken],
+    [authJwt.verifyToken,authJwt.isUser],
     controller.userBoard
   );
 
@@ -39,6 +39,7 @@ module.exports = function (app) {
   app.post("/user/updateuser/:id", controller.updateUser);
 
   app.get("/user/deleteuser/:id", controller.deleteUser);
+  app.get("/user/detailuser/:id", controller.Detailuser);
 
   app.post("/", controller.signin);
   app.get("/user/api/listuser", controller.APIlistUser);

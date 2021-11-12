@@ -37,6 +37,7 @@
               <th scope="col">Image</th>
               <th scope="col">Content</th>
               <th scope="col">Star</th>
+              <th scope="col">Option</th>
 
             </tr>
           </thead>
@@ -54,13 +55,19 @@
                 <%= review.reviewDate %>
               </td>
               <td>
-                <%= review.reviewImg %>
+               
+                <img style="width: 100px; height: 100px;" src="http://localhost:8080/uploads/<%= review.reviewImg %>" alt="">
               </td>
               <td>
                 <%= review.reviewContent %>
               </td>
               <td>
-                <%= review.reviewStar%>
+                <%= review.numberStar %>
+              </td>
+              <td>
+                <a href="./Deletereview/<%= review.id %>" onclick="return confirm('Are you sure you want to delete this item?');"><i
+                  class="fas fa-trash"
+                  style='font-size:20px; color: 	#FF3333;'></i></a>
               </td>
             </tr>
             <% }); %>

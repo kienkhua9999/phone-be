@@ -31,7 +31,24 @@ exports.listUser = (req, res) => {
         res.render('./listuser.ejs', { ds_user: user });
     });
 }
+//deatil
+exports.Detailuser = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`SELECT * FROM users  WHERE users."id" = ${id}`, function (err, result) {
+            done();
 
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            res.render('./Detailuser.ejs',{user:result.rows[0]});  
+        });
+    });
+};
 //post
 exports.fromInsert = (req, res) => {
     pool_db.connect(function (err, client, done) {
@@ -79,7 +96,7 @@ exports.addUser = async (req, res) => {
     });
 };
 //put
-//pust
+
 exports.fromUpdate = (req, res) => {
     pool_db.connect(function (err, client, done) {
         if (err) {
@@ -173,7 +190,6 @@ exports.signin = (req, res) => {
         if (!user) {
           return res.status(404).send({ message: "User Not found." });
         }
-  
         var passwordIsValid = bcrypt.compareSync(
           req.body.password,
           user.password
@@ -203,7 +219,7 @@ exports.signin = (req, res) => {
       });
   };
 
-  exports.APIlistUser = (req, res) => {
+exports.APIlistUser = (req, res) => {
     User.findAll().then(user => {
         res.json(user);
     });
