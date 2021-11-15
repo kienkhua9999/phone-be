@@ -71,3 +71,8 @@ http://103.163.119.33:8080/product/api/Apiproduct_highprice
    
    - http://103.163.119.33:8080/order/api/Orderdetail_user/:id
 
+cập nhật số lượng - post
+ - http://103.163.119.33:8080/order/api/updateorder_Quantity/:id
+cập nhât trạng thái - post
+ - http://103.163.119.33:8080/order/api/updateorder_Status/:id
+

@@ -13,7 +13,7 @@ module.exports = function (app) {
 
   app.get(
     "/api/test/user",
-    [authJwt.verifyToken,authJwt.isUser],
+    [authJwt.verifyToken],
     controller.userBoard
   );
 

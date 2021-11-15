@@ -36,6 +36,10 @@ module.exports = function (app) {
     app.post("/order/api/addCart", controller.addCart);
 
     app.get("/order/api/Orderdetail_user/:id", controller.Orderdetail_user);
+
+    app.post("/order/api/updateorder_Quantity/:id", controller.updateorder_Quantity);
+
+    app.post("/order/api/updateorder_Status/:id", controller.updateorder_Status);
   
 
 };
