@@ -40,6 +40,10 @@ module.exports = function (app) {
     app.post("/order/api/updateorder_Quantity/:id", controller.updateorder_Quantity);
 
     app.post("/order/api/updateorder_Status/:id", controller.updateorder_Status);
+
+    app.post("/order/api/Api_paypal/:id", controller.Api_paypal);
+    app.get("/order/api/thanhcong", controller.Api_success);
+    app.get("/order/api/thatbai", controller.Api_Cancelled);
   
 
 };

@@ -212,6 +212,7 @@ exports.signin = (req, res) => {
             authorities.push("ROLE_" + roles[i].name.toUpperCase());
           }
           res.redirect("../../index");
+          
         });
       })
       .catch(err => {

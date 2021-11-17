@@ -143,7 +143,7 @@ exports.updateProduct = async (req, res) => {
         if (err) {
             return console.error('error', err);
         } else {
-            client.query(`UPDATE products SET "productname" = '${req.body.productname}' , "description" = '${req.body.description}' , "guarantee" = '${req.body.guarantee}', "makingdate" = '${req.body.makingdate}', "price" = '${req.body.price}', "quantity" = '${req.body.quantity}', "saleoff" = '${req.body.saleoff}', "imageurl" = '${req.file.originalname}', "status" = '${req.body.status}', "categoryid" = '${req.body.categoryid}', "producerid" = '${req.body.producerid}' WHERE "id" = ${req.params.id} `, function (err, result) {
+            client.query(`UPDATE products SET "productname" = '${req.body.productname}' , "description" = '${req.body.description}' , "guarantee" = '${req.body.guarantee}', "makingdate" = '${req.body.makingdate}', "price" = '${req.body.price}', "quantity" = '${req.body.quantity}', "saleoff" = '${req.body.saleoff}', "imageurl" = '${req.file.originalname}', "status" = '${req.body.status}', "categoryid" = '${req.body.categoryid}', "producerid" = '${req.body.producerid}' WHERE "id" = ${req.params.id} ORDER BY id ASC `, function (err, result) {
                 done();
               
                 if (err) {

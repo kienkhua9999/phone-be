@@ -81,6 +81,11 @@
                                             style='font-size:20px; color:#FF3333;'></i></a>
                                         
                             </td>
+                            <td>
+                                <form action="http://localhost:8080/order/api/Api_paypal/<%= order.userId %>" method="post">
+                                    <input type="submit" value="Buy">
+                                  </form>
+                            </td>
                         </tr>
                         <% }); %>
                             
