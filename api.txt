@@ -76,3 +76,14 @@ cập nhật số lượng - post
 cập nhât trạng thái - post
  - http://103.163.119.33:8080/order/api/updateorder_Status/:id
 
+
+- chức năng thanh toán - post - id của tài khoản mua hàng
+ - http://103.163.119.33:8080/order/api/Api_paypal/:id", controller.Api_paypal);
+
+- sau khi ấn vào continue sẽ dùng api này
+ - http://103.163.119.33:8080/order/api/thanhcong", controller.Api_success);
+
+ - nếu thất bại sẽ chạy vào api này
+ - http://103.163.119.33:8080/order/api/thatbai", controller.Api_Cancelled);
+xoa don hang 
+-http://103.163.119.33:8080/order/Deleteorderapi/:id

@@ -44,6 +44,6 @@ module.exports = function (app) {
     app.post("/order/api/Api_paypal/:id", controller.Api_paypal);
     app.get("/order/api/thanhcong", controller.Api_success);
     app.get("/order/api/thatbai", controller.Api_Cancelled);
-  
+    app.get("/order/Deleteorderapi/:id", controller.Deleteorderapi);
 
 };

@@ -370,7 +370,7 @@ exports.Api_paypal = async (req, res) => {
                         "payment_method": "paypal"
                     },
                     "redirect_urls": {
-                        "return_url": "http://localhost:8080/order/api/thanhcong",
+                        "return_url": "http://localhost:8080/order/api/thanhcong?tol=" + pay.toString(),
                         "cancel_url": "http://localhost:8080/order/api/thatbai"
                     },
                     "transactions": [{
@@ -423,6 +423,7 @@ exports.Api_paypal = async (req, res) => {
 
 };
 exports.Api_success = async (req, res) => {
+    const pay = req.query.tol;
     const payerId = req.query.PayerID;
                 const paymentId = req.query.paymentId;
             
@@ -431,17 +432,17 @@ exports.Api_success = async (req, res) => {
                     "transactions": [{
                         "amount": {
                             "currency": "USD",
-                            "total": "148"
+                            "total": pay.toString()
                         }
                     }]
                 };
             
                 paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
                     if (error) {
-                        res.send('that bai');
+                        res.status(400).send("Cancell");
                     } else {
                         console.log(JSON.stringify(payment));
-                        res.send("thanh cong")
+                        res.status(200).send("Success");
                         
                     }
                 });
@@ -449,6 +450,42 @@ exports.Api_success = async (req, res) => {
                
 };
 exports.Api_Cancelled = async (req, res) => {
-    res.send('Cancelled');
+    res.status(400).send("Cancell");
 
+};
+
+
+exports.Deleteorderapi = (req, res) => {
+    pool_db.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error', err);
+        }
+        var id = req.params.id;
+        client.query(`delete from orderproducts where orderproducts."id"=${id} `, function (err, result) {
+            done();
+            if (err) {
+                res.end();
+                return console.error('error running query', err);
+            }
+            else {
+
+                pool_db.connect(function (err, client, done) {
+                    if (err) {
+                        return console.error('error', err);
+                    }
+                    client.query(`delete from orderdetails where orderdetails."id"=${id}`, function (err, result) {
+                        done();
+                        if (err) {
+                            res.end();
+                            return console.error('error running query', err);
+                        }
+                        res.send("thanh cong");
+
+                    });
+                });
+            }
+
+
+        });
+    });
 };
