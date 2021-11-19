@@ -370,8 +370,8 @@ exports.Api_paypal = async (req, res) => {
                         "payment_method": "paypal"
                     },
                     "redirect_urls": {
-                        "return_url": "http://localhost:8080/order/api/thanhcong?tol=" + pay.toString(),
-                        "cancel_url": "http://localhost:8080/order/api/thatbai"
+                        "return_url": "http://103.163.119.33:8080/order/api/thanhcong?tol=" + pay.toString(),
+                        "cancel_url": "http://103.163.119.33:8080/order/api/thatbai"
                     },
                     "transactions": [{
                         "item_list": {
