@@ -84,3 +84,4 @@ require('./app/routes/review.routes')(app);
 require('./app/routes/index.routes')(app);
 require('./app/routes/producer.routes')(app);
 require('./app/routes/productImage.routes')(app);
+require('./app/routes/banner.routes')(app);
